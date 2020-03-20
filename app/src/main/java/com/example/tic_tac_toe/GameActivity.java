@@ -9,17 +9,13 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.view.View;
-import android.widget.ImageView;
 
-public class HomeActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     HomeWatcher mHomeWatcher;
-    ImageView img;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_game);
         doBindService();
         Intent music = new Intent();
         music.setClass(this, MusicService.class);
@@ -41,16 +37,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         mHomeWatcher.startWatch();
-
-        img=findViewById(R.id.go);
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(HomeActivity.this, GameActivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
     private boolean mIsBound = false;
     private MusicService mServ;
     private ServiceConnection Scon =new ServiceConnection(){
@@ -70,6 +58,35 @@ public class HomeActivity extends AppCompatActivity {
                 Scon, Context.BIND_AUTO_CREATE);
         mIsBound = true;
     }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mServ != null) {
+            mServ.resumeMusic();
+        }
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        doUnbindService();
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        stopService(music);
+
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -86,35 +103,6 @@ public class HomeActivity extends AppCompatActivity {
                 mServ.pauseMusic();
             }
         }
-
-    }
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
-            unbindService(Scon);
-            mIsBound = false;
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (mServ != null) {
-            mServ.resumeMusic();
-        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        doUnbindService();
-        Intent music = new Intent();
-        music.setClass(this,MusicService.class);
-        stopService(music);
 
     }
 }
