@@ -13,8 +13,8 @@
             android:name=".MusicService"
             android:enabled="true" />
         <activity android:name=".GameActivity"></activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity" android:noHistory="true"/>
+        <activity android:name=".MainActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
