@@ -5,12 +5,12 @@ It will have a reset functionality and will also handle orientation changes, so 
 # Screenshots
 
 ### Splash Screen
-<img src="Screenshot/Splash.jpg" height=300/>
+<img src="Screenshot/Splash.jpg" height=300px>
 
 ### Game Screen
-<img src="Screenshot/1.jpg" height=300/>
-<img src="Screenshot/2.jpg" height=300/>
-<img src="Screenshot/3.jpg" height=300/>
+<img src="Screenshot/1.jpg" height=300px>
+<img src="Screenshot/2.jpg" height=300px>
+<img src="Screenshot/3.jpg" height=300px>
 
 # Video Tutorial
 ### Click below to play the tour
