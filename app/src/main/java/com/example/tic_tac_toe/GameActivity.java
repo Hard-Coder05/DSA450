@@ -21,10 +21,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private int roundCount;
 
-    private int player1Points;
-    private int player2Points;
+    private int player1Points;  // points of player 1
+    private int player2Points;  // points of player 2
 
-    private TextView textViewPlayer1;
+    private TextView textViewPlayer1; 
     private TextView textViewPlayer2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
