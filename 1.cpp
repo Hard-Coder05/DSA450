@@ -30,7 +30,8 @@ int main() {
 	ll tc;
 	cin >> tc;
 	while (tc--) {
-		ll n;
-		cin >> n;
+		ll d1,v1,d2,v2,p;
+		cin >> d1>>v1>>d2>>v2>>p;
+		
 	}
 }
