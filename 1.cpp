@@ -1,37 +1,23 @@
-/*
-Problem Link:
-#############################################
-Author: Siddharth Mishra
-GitHub: https://github.com/Hard-Coder05
-#############################################
-*/
-#include <iostream>
-#include <cstdlib>
-#include <math.h>
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <utility>
-#include <iterator>
-#include <string>
-#include <bits/stdc++.h>
-#define endl "\n"
-#define ull unsigned long long
-#define MOD 1000000007
-#define FIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-using namespace std;
-typedef long long int ll;
-int main() {
-	FIO;
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-	ll tc;
-	cin >> tc;
-	while (tc--) {
-		ll d1,v1,d2,v2,p;
-		cin >> d1>>v1>>d2>>v2>>p;
-		
+// METHOD 1 : when we have to edit the variable directly and no auxiliary space is available
+string reverseWord(string str)
+{
+	int start = 0;
+	int end = str.length() - 1;
+	while (start < end)
+	{
+		char c = str[start];
+		str[start] = str[end];
+		str[end] = c;
+		start++;
+		end--;
 	}
+	return str;
+}
+
+//METHOD 2: When we use STL
+string reverseWord(string str)
+{
+
+	reverse(str.begin(), str.end());
+	return str;
 }
